@@ -1,0 +1,177 @@
+{
+  "dataset_id": "3tj7-3tdz",
+  "dataset_url": "https://data.buffalony.gov/d/3tj7-3tdz",
+  "name": "311 Service Requests (May 2024 - Present)",
+  "license": "Public Domain U.S. Government",
+  "rows_updated_at": 1793170329,
+  "columns": [
+    {
+      "field": "createddate",
+      "name": "Created Date",
+      "type": "calendar_date",
+      "description": "The date and time the 311 service request was created"
+    },
+    {
+      "field": "casenumber",
+      "name": "CaseNumber",
+      "type": "text",
+      "description": "The unique case reference number for each 311 service request"
+    },
+    {
+      "field": "department",
+      "name": "Department",
+      "type": "text",
+      "description": "The department or agency that the 311 service request was referred to"
+    },
+    {
+      "field": "division",
+      "name": "Division",
+      "type": "text",
+      "description": "The division that the 311 service request was referred to"
+    },
+    {
+      "field": "type",
+      "name": "Type",
+      "type": "text",
+      "description": "The specific type of 311 service request"
+    },
+    {
+      "field": "status",
+      "name": "Status",
+      "type": "text",
+      "description": "The status of the 311 service request"
+    },
+    {
+      "field": "statusdescription",
+      "name": "StatusDescription",
+      "type": "text",
+      "description": "The status description of the 311 service request"
+    },
+    {
+      "field": "closeddate",
+      "name": "Closed Date",
+      "type": "calendar_date",
+      "description": "The date and time the case created by the 311 service request was closed by the responsible department"
+    },
+    {
+      "field": "propertyid",
+      "name": "PropertyID",
+      "type": "text",
+      "description": "A unique geographic identifier tied to a 311 service request, typically an SBL number"
+    },
+    {
+      "field": "reportedlocation",
+      "name": "ReportedLocation",
+      "type": "text",
+      "description": "The location as reported on the 311 service request"
+    },
+    {
+      "field": "assessednumber",
+      "name": "Assessed Number",
+      "type": "text",
+      "description": "The house number of the address associated with the 311 request"
+    },
+    {
+      "field": "assessedstreet",
+      "name": "AssessedStreet",
+      "type": "text",
+      "description": "The street associated with the 311 request"
+    },
+    {
+      "field": "street",
+      "name": "Street",
+      "type": "text",
+      "description": "The street associated with the 311 request"
+    },
+    {
+      "field": "secondarystreet",
+      "name": "Secondary Street",
+      "type": "text",
+      "description": "An optional secondary street associated with the 311 request"
+    },
+    {
+      "field": "city",
+      "name": "City",
+      "type": "text",
+      "description": "The city where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "state",
+      "name": "State",
+      "type": "text",
+      "description": "The state where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "zip",
+      "name": "Zip",
+      "type": "text",
+      "description": "The 5-digit zip code where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "latitude",
+      "name": "Latitude",
+      "type": "number",
+      "description": "The latitude associated with the 311 service request"
+    },
+    {
+      "field": "longitude",
+      "name": "Longitude",
+      "type": "number",
+      "description": "The longitude associated with the 311 service request"
+    },
+    {
+      "field": "duplicate_request",
+      "name": "Duplicate Request",
+      "type": "checkbox",
+      "description": "An identifier for duplicate service requests"
+    },
+    {
+      "field": "council_district",
+      "name": "Council District",
+      "type": "text",
+      "description": "The council district where the property referenced in the 311 service request is located. District boundaries effective Jan 1, 2024."
+    },
+    {
+      "field": "planningneighborhood",
+      "name": "PlanningNeighborhood",
+      "type": "text",
+      "description": "The planning neighborhood where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "planningsector",
+      "name": "PlanningSector",
+      "type": "text",
+      "description": "The planning sector where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "policedistrict",
+      "name": "PoliceDistrict",
+      "type": "text",
+      "description": "The police district where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "census_tract",
+      "name": "Census Tract",
+      "type": "text",
+      "description": "The census tract where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "census_block_group",
+      "name": "Census Block Group",
+      "type": "text",
+      "description": "The census block group where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "census_block",
+      "name": "Census Block",
+      "type": "text",
+      "description": "The census block where the property referenced in the 311 service request is located"
+    },
+    {
+      "field": "location",
+      "name": "Location",
+      "type": "point",
+      "description": ""
+    }
+  ]
+}

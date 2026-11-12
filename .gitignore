@@ -1,0 +1,8 @@
+# Built data: regenerate with `python -m etl.build`. Commit schema_card.md and snapshot.json only if you want them in the README.
+backend/data/raw/
+backend/data/*.duckdb
+backend/data/*.duckdb.wal
+__pycache__/
+.pytest_cache/
+.venv/
+.env

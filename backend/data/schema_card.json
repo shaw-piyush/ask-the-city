@@ -1,0 +1,1408 @@
+{
+  "table": "requests_311",
+  "source": "311 Service Requests (May 2024 - Present)",
+  "source_url": "https://data.buffalony.gov/d/3tj7-3tdz",
+  "row_count": 208788,
+  "created_at_range": [
+    "2024-05-11 14:49",
+    "2026-10-28 01:56"
+  ],
+  "rules": [
+    "Query only the table requests_311. Use DuckDB SQL.",
+    "For relative dates ('last 30 days', 'this year'), anchor to (SELECT max(created_at) FROM requests_311), never now() or current_date: the data is a snapshot.",
+    "Filter categorical columns with exact values from the 'values' lists below. Use ILIKE only when no listed value fits.",
+    "When counting requests, exclude duplicates with WHERE duplicate_request IS NOT TRUE, unless the question asks about duplicates.",
+    "days_to_close is null for open requests; exclude nulls when averaging and prefer median() over avg() for durations.",
+    "Data starts in May 2024. Say so if a question asks about earlier dates.",
+    "The most recent month is incomplete. For monthly trends, exclude it or say it is partial."
+  ],
+  "columns": [
+    {
+      "name": "created_at",
+      "type": "TIMESTAMP",
+      "description": "The date and time the 311 service request was created",
+      "null_pct": 0.0,
+      "min": "2024-05-11 14:49",
+      "max": "2026-10-28 01:56"
+    },
+    {
+      "name": "case_number",
+      "type": "VARCHAR",
+      "description": "The unique case reference number for each 311 service request",
+      "null_pct": 0.0,
+      "distinct": 208788
+    },
+    {
+      "name": "department",
+      "type": "VARCHAR",
+      "description": "The department or agency that the 311 service request was referred to",
+      "null_pct": 0.0,
+      "distinct": 14,
+      "values": [
+        {
+          "value": "Public Works, Parks & Streets",
+          "count": 138826
+        },
+        {
+          "value": "Permit & Inspection Services",
+          "count": 33321
+        },
+        {
+          "value": "Parking",
+          "count": 13220
+        },
+        {
+          "value": "Buffalo Police Department",
+          "count": 7459
+        },
+        {
+          "value": "National Grid",
+          "count": 6190
+        },
+        {
+          "value": "Buffalo Sewer Authority",
+          "count": 4242
+        },
+        {
+          "value": "Buffalo Water",
+          "count": 4090
+        },
+        {
+          "value": "Buffalo Municipal Housing Authority",
+          "count": 857
+        },
+        {
+          "value": "Buffalo Fire Department",
+          "count": 320
+        },
+        {
+          "value": "Mayor's Office",
+          "count": 212
+        },
+        {
+          "value": "City Clerk",
+          "count": 31
+        },
+        {
+          "value": "Management Information Systems",
+          "count": 8
+        },
+        {
+          "value": "Community Services & Recreational Programming",
+          "count": 6
+        },
+        {
+          "value": "Human Resources",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "name": "division",
+      "type": "VARCHAR",
+      "description": "The division that the 311 service request was referred to",
+      "null_pct": 33.4,
+      "distinct": 14,
+      "values": [
+        {
+          "value": "Streets and Sanitation",
+          "count": 92624
+        },
+        {
+          "value": "Engineering",
+          "count": 28361
+        },
+        {
+          "value": "Parks and Recreation Forestry",
+          "count": 9040
+        },
+        {
+          "value": "Animal Shelter",
+          "count": 4986
+        },
+        {
+          "value": "Parks and Recreation",
+          "count": 2740
+        },
+        {
+          "value": "Mayors Impact Team",
+          "count": 488
+        },
+        {
+          "value": "User Fee",
+          "count": 469
+        },
+        {
+          "value": "Citizen Services",
+          "count": 127
+        },
+        {
+          "value": "Harbor Master",
+          "count": 81
+        },
+        {
+          "value": "Real Estate",
+          "count": 79
+        },
+        {
+          "value": "Buildings",
+          "count": 37
+        },
+        {
+          "value": "Recreation Services",
+          "count": 6
+        },
+        {
+          "value": "Office of Strategic Planning",
+          "count": 5
+        },
+        {
+          "value": "Diversity, Opportunity & Inclusion",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "request_type",
+      "type": "VARCHAR",
+      "description": "The specific type of 311 service request",
+      "null_pct": 0.0,
+      "distinct": 179,
+      "values": [
+        {
+          "value": "Replacement Garbage Totes Request",
+          "count": 19173
+        },
+        {
+          "value": "Garbage Missed Pick Up",
+          "count": 14791
+        },
+        {
+          "value": "Housing or Building Violations(Exterior)",
+          "count": 14502
+        },
+        {
+          "value": "General Parking Issue(s)",
+          "count": 11363
+        },
+        {
+          "value": "Pothole Issue",
+          "count": 9177
+        },
+        {
+          "value": "High Grass/Weeds",
+          "count": 7509
+        },
+        {
+          "value": "Missed Pickup; 2 Piece Large Trash",
+          "count": 6544
+        },
+        {
+          "value": "Streetlight(s) Issues",
+          "count": 6190
+        },
+        {
+          "value": "Order Additional or Change Current Totes",
+          "count": 5755
+        },
+        {
+          "value": "Recycling Missed Pick Up",
+          "count": 5713
+        },
+        {
+          "value": "Leaves / Lawn Debris",
+          "count": 5044
+        },
+        {
+          "value": "Rodent Control Issue",
+          "count": 4856
+        },
+        {
+          "value": "Trash Ordinance Violation",
+          "count": 4341
+        },
+        {
+          "value": "Recycling Tote Replace",
+          "count": 4060
+        },
+        {
+          "value": "Street Snow Plowing Request",
+          "count": 3788
+        },
+        {
+          "value": "Housing or Building Violations(Interior)",
+          "count": 3003
+        },
+        {
+          "value": "Sewer Issue",
+          "count": 2769
+        },
+        {
+          "value": "Dog Animal Control Issue",
+          "count": 2757
+        },
+        {
+          "value": "Tree Pruning Request",
+          "count": 2630
+        },
+        {
+          "value": "Buffalo Water Testing Request",
+          "count": 2519
+        },
+        {
+          "value": "Vacant Lot Cutting",
+          "count": 2468
+        },
+        {
+          "value": "Dead Animal Removal Request",
+          "count": 2229
+        },
+        {
+          "value": "Sidewalk(s) Repair Request",
+          "count": 2219
+        },
+        {
+          "value": "Sign Issue",
+          "count": 2145
+        },
+        {
+          "value": "Illegal Dumping Curb",
+          "count": 2143
+        },
+        {
+          "value": "Excessive Noise",
+          "count": 2122
+        },
+        {
+          "value": "Fallen Tree, split tree, hanging limb",
+          "count": 2109
+        },
+        {
+          "value": "Police Issue (Other)",
+          "count": 2054
+        },
+        {
+          "value": "Bulk Trash Issue",
+          "count": 2042
+        },
+        {
+          "value": "Signal Out or Flashing",
+          "count": 2032
+        },
+        {
+          "value": "Tree Removal",
+          "count": 1928
+        },
+        {
+          "value": "Recycling Tote Deliver",
+          "count": 1917
+        },
+        {
+          "value": "City Parks Issue",
+          "count": 1741
+        },
+        {
+          "value": "Sweeper Request",
+          "count": 1460
+        },
+        {
+          "value": "Street Paving Request",
+          "count": 1412
+        },
+        {
+          "value": "Pick and Pay",
+          "count": 1407
+        },
+        {
+          "value": "Illegal Dumping Private Property / Vacant Lot",
+          "count": 1383
+        },
+        {
+          "value": "Damaged or Missing Street Light Pole",
+          "count": 1334
+        },
+        {
+          "value": "Sign Maintenance",
+          "count": 1283
+        },
+        {
+          "value": "Street Salting Request",
+          "count": 1205
+        },
+        {
+          "value": "Totes Abandon Pickup",
+          "count": 1176
+        },
+        {
+          "value": "Cave In",
+          "count": 1173
+        },
+        {
+          "value": "Abandoned Vehicles (Parking Dept)",
+          "count": 1150
+        },
+        {
+          "value": "Sidewalk Snow/Ice Removal Inspection",
+          "count": 1116
+        },
+        {
+          "value": "Illegal Dumping Street",
+          "count": 1099
+        },
+        {
+          "value": "Tree Planting Request",
+          "count": 1041
+        },
+        {
+          "value": "Report Flooding",
+          "count": 1027
+        },
+        {
+          "value": "PW Ongoing Construction Issue",
+          "count": 988
+        },
+        {
+          "value": "Signal Issue",
+          "count": 984
+        },
+        {
+          "value": "Right of Way Issue",
+          "count": 968
+        },
+        {
+          "value": "Tree Other",
+          "count": 954
+        },
+        {
+          "value": "Missed Pickup; 3 Piece Large Trash",
+          "count": 950
+        },
+        {
+          "value": "Recycling Tote Combo (Exchange Size)",
+          "count": 940
+        },
+        {
+          "value": "Quality of Life Issue (Other)",
+          "count": 880
+        },
+        {
+          "value": "BMHA Issue",
+          "count": 857
+        },
+        {
+          "value": "Homeless Concern (Quality of Life Issue)",
+          "count": 856
+        },
+        {
+          "value": "Buffalo Water Service Issue",
+          "count": 816
+        },
+        {
+          "value": "Totes Audit",
+          "count": 762
+        },
+        {
+          "value": "Board Up request",
+          "count": 759
+        },
+        {
+          "value": "Sidewalk(s) Issue",
+          "count": 668
+        },
+        {
+          "value": "Senior or Disabled Citizen, TV/Electronics Pickup Request",
+          "count": 650
+        },
+        {
+          "value": "Wildlife Control Issue",
+          "count": 646
+        },
+        {
+          "value": "Recycling Tote Abandon Pickup",
+          "count": 645
+        },
+        {
+          "value": "Signal Timing Issue in City of Buffalo",
+          "count": 633
+        },
+        {
+          "value": "Other Hole in Road",
+          "count": 599
+        },
+        {
+          "value": "Neighborhood Traffic Calming",
+          "count": 570
+        },
+        {
+          "value": "Street Snow Plowing Issue",
+          "count": 529
+        },
+        {
+          "value": "Pavement Marking Issue",
+          "count": 527
+        },
+        {
+          "value": "Public Works User Fee Issue",
+          "count": 469
+        },
+        {
+          "value": "Privately Owned Property, Abandoned Vehicle",
+          "count": 455
+        },
+        {
+          "value": "Speeding Issue(s)",
+          "count": 407
+        },
+        {
+          "value": "Buffalo Water Service Request",
+          "count": 401
+        },
+        {
+          "value": "Basement Flooding Issue",
+          "count": 396
+        },
+        {
+          "value": "License Concern",
+          "count": 355
+        },
+        {
+          "value": "Weather Emergency Trash Pick Up - 9/3/2026 Event",
+          "count": 335
+        },
+        {
+          "value": "Loitering",
+          "count": 321
+        },
+        {
+          "value": "Fire Hydrant Issue",
+          "count": 320
+        },
+        {
+          "value": "Graffiti Private Property",
+          "count": 307
+        },
+        {
+          "value": "PW Missing Manhole Cover",
+          "count": 293
+        },
+        {
+          "value": "Bees and Hornets Animal Control Issue",
+          "count": 272
+        },
+        {
+          "value": "Personal Wildlife Trap Report",
+          "count": 264
+        },
+        {
+          "value": "Curbs Replacement Request",
+          "count": 260
+        },
+        {
+          "value": "Stump Removal",
+          "count": 254
+        },
+        {
+          "value": "Chicken Issue",
+          "count": 244
+        },
+        {
+          "value": "Sidewalk Snow Removal Inspection",
+          "count": 228
+        },
+        {
+          "value": "ATV and or Dirt Bike",
+          "count": 222
+        },
+        {
+          "value": "Heating or A/C Issues(Interior)",
+          "count": 217
+        },
+        {
+          "value": "TV and Electronic Waste at Curb",
+          "count": 211
+        },
+        {
+          "value": "Recycling Tote Pickup",
+          "count": 202
+        },
+        {
+          "value": "Fruit Belt Neighborhood Residential Parking Permit - Visitor Pass",
+          "count": 201
+        },
+        {
+          "value": "Tree Pruning Private Property",
+          "count": 199
+        },
+        {
+          "value": "Parking Single Meter Issue(s)",
+          "count": 194
+        },
+        {
+          "value": "Olmsted Parks Issue",
+          "count": 191
+        },
+        {
+          "value": "Parking Mobile App Issue(s)",
+          "count": 190
+        },
+        {
+          "value": "Basketball Hoop in Street",
+          "count": 182
+        },
+        {
+          "value": "Fallen Tree Inspection on Private Property",
+          "count": 169
+        },
+        {
+          "value": "General Impact Team Request",
+          "count": 162
+        },
+        {
+          "value": "Shopping Carts (Impact Team)",
+          "count": 161
+        },
+        {
+          "value": "Noise Nuisance (Loud Music)",
+          "count": 156
+        },
+        {
+          "value": "Pools and Splashpads Issue",
+          "count": 145
+        },
+        {
+          "value": "Park Garbage Pickup",
+          "count": 130
+        },
+        {
+          "value": "Neighborhood CleanUp Request",
+          "count": 127
+        },
+        {
+          "value": "City Park Tree Issue",
+          "count": 124
+        },
+        {
+          "value": "Circles Medians Triangles Issues (Contractor)",
+          "count": 118
+        },
+        {
+          "value": "Senior or Disabled Citizen, TV Pickup Request",
+          "count": 117
+        },
+        {
+          "value": "New Sidewalk/Ramp",
+          "count": 115
+        },
+        {
+          "value": "Electrical Violation (Interior)",
+          "count": 110
+        },
+        {
+          "value": "General Fire Issue",
+          "count": 106
+        },
+        {
+          "value": "Fridge Removal",
+          "count": 103
+        },
+        {
+          "value": "Parking Pay Station Issue(s)",
+          "count": 101
+        },
+        {
+          "value": "Down Wire(s)",
+          "count": 96
+        },
+        {
+          "value": "BPD Request Board Up/Cleanup Task, For Impact Team",
+          "count": 93
+        },
+        {
+          "value": "Rental Registration",
+          "count": 88
+        },
+        {
+          "value": "Healthy Homes / PRI Inspection",
+          "count": 87
+        },
+        {
+          "value": "Damage from Snow Removal",
+          "count": 84
+        },
+        {
+          "value": "Buffalo Fire Prevention Request",
+          "count": 79
+        },
+        {
+          "value": "Real Estate Issue",
+          "count": 79
+        },
+        {
+          "value": "Sweeper Issue",
+          "count": 73
+        },
+        {
+          "value": "Christmas Tree Removal",
+          "count": 72
+        },
+        {
+          "value": "Parks Buildings Maintenance",
+          "count": 70
+        },
+        {
+          "value": "Buffalo Place Park Issue",
+          "count": 67
+        },
+        {
+          "value": "Property Issue(s) (Quality of Life Issue)",
+          "count": 64
+        },
+        {
+          "value": "Curb - Metal Protruding Issue",
+          "count": 59
+        },
+        {
+          "value": "Graffiti, City Property or Right of Way (Impact Team)",
+          "count": 56
+        },
+        {
+          "value": "Shoreline Trail, North Buffalo Rails to Trails, Jesse Kregal Pathway Issue",
+          "count": 55
+        },
+        {
+          "value": "Bridge Issue",
+          "count": 51
+        },
+        {
+          "value": "Panhandling",
+          "count": 50
+        },
+        {
+          "value": "Ice Rink Issue",
+          "count": 47
+        },
+        {
+          "value": "Erie Basin Marina Issue",
+          "count": 45
+        },
+        {
+          "value": "Electrical Violation (Exterior)",
+          "count": 44
+        },
+        {
+          "value": "Naval Park Issue",
+          "count": 43
+        },
+        {
+          "value": "Sneakers Hanging",
+          "count": 43
+        },
+        {
+          "value": "Building Maintenance",
+          "count": 37
+        },
+        {
+          "value": "Rain Barrels",
+          "count": 37
+        },
+        {
+          "value": "Waterfront Issues",
+          "count": 36
+        },
+        {
+          "value": "Abandoned Vehicles",
+          "count": 34
+        },
+        {
+          "value": "Buffalo Water Billing Request",
+          "count": 34
+        },
+        {
+          "value": "Buffalo Fire Department Snow on Hydrant",
+          "count": 33
+        },
+        {
+          "value": "DPIS Personnel Complaint",
+          "count": 32
+        },
+        {
+          "value": "Graffiti issue",
+          "count": 32
+        },
+        {
+          "value": "Ralph Wilson Park Issue",
+          "count": 32
+        },
+        {
+          "value": "Union Ship Canal Issue (BUDC)",
+          "count": 31
+        },
+        {
+          "value": "Heating or A/C Issues(Exterior)",
+          "count": 29
+        },
+        {
+          "value": "Unlicensed Street Vendor",
+          "count": 29
+        },
+        {
+          "value": "Bike Rack Issue",
+          "count": 26
+        },
+        {
+          "value": "Johnnie B Wiley Issue (BPS)",
+          "count": 24
+        },
+        {
+          "value": "Juvenile / Youth Concern",
+          "count": 23
+        },
+        {
+          "value": "Dog Licensing Issue",
+          "count": 21
+        },
+        {
+          "value": "Snow-Bank Removal",
+          "count": 21
+        },
+        {
+          "value": "Tifft Nature Preserve Issue (Buffalo Museum of Science)",
+          "count": 21
+        },
+        {
+          "value": "Vehicle Immobilized in Street (Parking Dept)",
+          "count": 21
+        },
+        {
+          "value": "Abandoned Property",
+          "count": 20
+        },
+        {
+          "value": "DPIS Department Operational Complaint",
+          "count": 15
+        },
+        {
+          "value": "Outer Harbor Parkway (Empire State Development Corp)",
+          "count": 14
+        },
+        {
+          "value": "Report Bridge Flooding",
+          "count": 13
+        },
+        {
+          "value": "Report Snow on Bridge or Viaduct",
+          "count": 13
+        },
+        {
+          "value": "Pat Sole Park (Peace Bridge Authority)",
+          "count": 11
+        },
+        {
+          "value": "General City Clerk Issue",
+          "count": 10
+        },
+        {
+          "value": "ROW Bike Lane ; on-road or cycle tracks Issue",
+          "count": 10
+        },
+        {
+          "value": "Signal Issue DoT",
+          "count": 10
+        },
+        {
+          "value": "Bike Rack Request",
+          "count": 9
+        },
+        {
+          "value": "Report Technical Issue for Buff311 App",
+          "count": 8
+        },
+        {
+          "value": "Public Safety Support - (BFD)",
+          "count": 6
+        },
+        {
+          "value": "Recreation Center Issue",
+          "count": 6
+        },
+        {
+          "value": "Weather Event Damage to ROW Infrastructure",
+          "count": 6
+        },
+        {
+          "value": "Compensation & Benefits Issue",
+          "count": 4
+        },
+        {
+          "value": "Unregistered Vehicle",
+          "count": 4
+        },
+        {
+          "value": "Impact Bill Inquiry or Concern",
+          "count": 3
+        },
+        {
+          "value": "Zoning Board of Appeals Concern",
+          "count": 3
+        },
+        {
+          "value": "General OSP Issue",
+          "count": 2
+        },
+        {
+          "value": "FireHydrant",
+          "count": 1
+        },
+        {
+          "value": "Illegal Dumping",
+          "count": 1
+        },
+        {
+          "value": "Illegal Parking (Quality of Life Issue)",
+          "count": 1
+        },
+        {
+          "value": "Livestock Issue",
+          "count": 1
+        },
+        {
+          "value": "New Americans Request",
+          "count": 1
+        },
+        {
+          "value": "Short Term Rental Issue",
+          "count": 1
+        },
+        {
+          "value": "Snow Removal Concern",
+          "count": 1
+        },
+        {
+          "value": "Street Salting Issue",
+          "count": 1
+        },
+        {
+          "value": "Unlicensed Business",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "type": "VARCHAR",
+      "description": "The status of the 311 service request",
+      "null_pct": 0.0,
+      "distinct": 5,
+      "values": [
+        {
+          "value": "Closed",
+          "count": 197812
+        },
+        {
+          "value": "New",
+          "count": 6275
+        },
+        {
+          "value": "In Progress",
+          "count": 4692
+        },
+        {
+          "value": "On Hold",
+          "count": 5
+        },
+        {
+          "value": "Cancelled",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "name": "status_description",
+      "type": "VARCHAR",
+      "description": "The status description of the 311 service request",
+      "null_pct": 11.9,
+      "distinct": 158,
+      "examples": [
+        "Public Works Engineering will be notified of this request.",
+        "The Buffalo Police Department has taken appropriate action.",
+        "(1) Public Works Engineering has reviewed this request and found this location does not meet the criteria for the requested traffic calming measure.  (2) Public Works Engineering has reviewed this request and submitted the request for review by the overse"
+      ]
+    },
+    {
+      "name": "closed_at",
+      "type": "TIMESTAMP",
+      "description": "The date and time the case created by the 311 service request was closed by the responsible department",
+      "null_pct": 5.3,
+      "min": "2024-05-14 19:27",
+      "max": "2026-10-27 22:33"
+    },
+    {
+      "name": "assessedstreet",
+      "type": "VARCHAR",
+      "description": "The street associated with the 311 request",
+      "null_pct": 0.4,
+      "distinct": 1596,
+      "examples": [
+        "FOLGER",
+        "DARTMOUTH",
+        "WESLEY"
+      ]
+    },
+    {
+      "name": "street",
+      "type": "VARCHAR",
+      "description": "The street associated with the 311 request",
+      "null_pct": 0.3,
+      "distinct": 4230,
+      "examples": [
+        "Mulberry St",
+        "Doat St",
+        "Oxford Ave"
+      ]
+    },
+    {
+      "name": "city",
+      "type": "VARCHAR",
+      "description": "The city where the property referenced in the 311 service request is located",
+      "null_pct": 2.1,
+      "distinct": 7,
+      "values": [
+        {
+          "value": "Buffalo",
+          "count": 204273
+        },
+        {
+          "value": "Cheektowaga",
+          "count": 53
+        },
+        {
+          "value": "Amherst",
+          "count": 28
+        },
+        {
+          "value": "Tonawanda",
+          "count": 25
+        },
+        {
+          "value": "Lackawanna",
+          "count": 12
+        },
+        {
+          "value": "BUFFALO NY",
+          "count": 5
+        },
+        {
+          "value": "West Seneca",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "name": "state",
+      "type": "VARCHAR",
+      "description": "The state where the property referenced in the 311 service request is located",
+      "null_pct": 2.3,
+      "distinct": 1,
+      "values": [
+        {
+          "value": "NY",
+          "count": 204026
+        }
+      ]
+    },
+    {
+      "name": "zip",
+      "type": "VARCHAR",
+      "description": "The 5-digit zip code where the property referenced in the 311 service request is located",
+      "null_pct": 5.3,
+      "distinct": 20,
+      "values": [
+        {
+          "value": "14215",
+          "count": 24899
+        },
+        {
+          "value": "14213",
+          "count": 17801
+        },
+        {
+          "value": "14211",
+          "count": 17652
+        },
+        {
+          "value": "14206",
+          "count": 15974
+        },
+        {
+          "value": "14220",
+          "count": 15586
+        },
+        {
+          "value": "14207",
+          "count": 15062
+        },
+        {
+          "value": "14216",
+          "count": 14940
+        },
+        {
+          "value": "14214",
+          "count": 14622
+        },
+        {
+          "value": "14210",
+          "count": 11069
+        },
+        {
+          "value": "14208",
+          "count": 8767
+        },
+        {
+          "value": "14222",
+          "count": 8490
+        },
+        {
+          "value": "14212",
+          "count": 7538
+        },
+        {
+          "value": "14201",
+          "count": 7517
+        },
+        {
+          "value": "14204",
+          "count": 6671
+        },
+        {
+          "value": "14209",
+          "count": 5215
+        },
+        {
+          "value": "14202",
+          "count": 3429
+        },
+        {
+          "value": "14203",
+          "count": 2281
+        },
+        {
+          "value": "14218",
+          "count": 142
+        },
+        {
+          "value": "14225",
+          "count": 101
+        },
+        {
+          "value": "14223",
+          "count": 26
+        }
+      ],
+      "values_note": "top 40 by request volume"
+    },
+    {
+      "name": "latitude",
+      "type": "DOUBLE",
+      "description": "The latitude associated with the 311 service request",
+      "null_pct": 0.3,
+      "min": 42.82728,
+      "max": 42.96646
+    },
+    {
+      "name": "longitude",
+      "type": "DOUBLE",
+      "description": "The longitude associated with the 311 service request",
+      "null_pct": 0.3,
+      "min": -78.91208,
+      "max": -78.79869
+    },
+    {
+      "name": "duplicate_request",
+      "type": "BOOLEAN",
+      "description": "An identifier for duplicate service requests",
+      "null_pct": 0.0,
+      "values": [
+        {
+          "value": false,
+          "count": 203873
+        },
+        {
+          "value": true,
+          "count": 4915
+        }
+      ]
+    },
+    {
+      "name": "council_district",
+      "type": "VARCHAR",
+      "description": "The council district where the property referenced in the 311 service request is located. District boundaries effective Jan 1, 2024.",
+      "null_pct": 1.1,
+      "distinct": 9,
+      "values": [
+        {
+          "value": "LOVEJOY",
+          "count": 27028
+        },
+        {
+          "value": "FILLMORE",
+          "count": 26331
+        },
+        {
+          "value": "ELLICOTT",
+          "count": 24270
+        },
+        {
+          "value": "MASTEN",
+          "count": 24074
+        },
+        {
+          "value": "NIAGARA",
+          "count": 22095
+        },
+        {
+          "value": "SOUTH",
+          "count": 21992
+        },
+        {
+          "value": "DELAWARE",
+          "count": 21762
+        },
+        {
+          "value": "NORTH",
+          "count": 19534
+        },
+        {
+          "value": "UNIVERSITY",
+          "count": 19447
+        }
+      ]
+    },
+    {
+      "name": "planningneighborhood",
+      "type": "VARCHAR",
+      "description": "The planning neighborhood where the property referenced in the 311 service request is located",
+      "null_pct": 2.4,
+      "distinct": 35,
+      "values": [
+        {
+          "value": "Broadway Fillmore",
+          "count": 11569
+        },
+        {
+          "value": "North Park",
+          "count": 11501
+        },
+        {
+          "value": "South Park",
+          "count": 10881
+        },
+        {
+          "value": "Elmwood Bidwell",
+          "count": 10350
+        },
+        {
+          "value": "Kensington-Bailey",
+          "count": 9291
+        },
+        {
+          "value": "Lovejoy",
+          "count": 8466
+        },
+        {
+          "value": "West Side",
+          "count": 8211
+        },
+        {
+          "value": "Genesee-Moselle",
+          "count": 7816
+        },
+        {
+          "value": "Schiller Park",
+          "count": 7542
+        },
+        {
+          "value": "University Heights",
+          "count": 7445
+        },
+        {
+          "value": "Elmwood Bryant",
+          "count": 7200
+        },
+        {
+          "value": "Riverside",
+          "count": 6753
+        },
+        {
+          "value": "Upper West Side",
+          "count": 6513
+        },
+        {
+          "value": "Seneca-Cazenovia",
+          "count": 6504
+        },
+        {
+          "value": "Masten Park",
+          "count": 6415
+        },
+        {
+          "value": "Parkside",
+          "count": 5900
+        },
+        {
+          "value": "Hopkins-Tifft",
+          "count": 5424
+        },
+        {
+          "value": "Kaisertown",
+          "count": 5099
+        },
+        {
+          "value": "Kenfield",
+          "count": 5037
+        },
+        {
+          "value": "Delavan Grider",
+          "count": 4781
+        },
+        {
+          "value": "Central Park",
+          "count": 4751
+        },
+        {
+          "value": "Hamlin Park",
+          "count": 4546
+        },
+        {
+          "value": "Fillmore-Leroy",
+          "count": 4544
+        },
+        {
+          "value": "Allentown",
+          "count": 4154
+        },
+        {
+          "value": "Central",
+          "count": 3746
+        },
+        {
+          "value": "Grant-Amherst",
+          "count": 3647
+        },
+        {
+          "value": "MLK Park",
+          "count": 3524
+        },
+        {
+          "value": "Lower West Side",
+          "count": 3465
+        },
+        {
+          "value": "Seneca Babcock",
+          "count": 3356
+        },
+        {
+          "value": "Fruit Belt",
+          "count": 3228
+        },
+        {
+          "value": "Black Rock",
+          "count": 2828
+        },
+        {
+          "value": "West Hertel",
+          "count": 2544
+        },
+        {
+          "value": "Pratt-Willert",
+          "count": 2447
+        },
+        {
+          "value": "First Ward",
+          "count": 2262
+        },
+        {
+          "value": "Ellicott",
+          "count": 2004
+        }
+      ]
+    },
+    {
+      "name": "planningsector",
+      "type": "VARCHAR",
+      "description": "The planning sector where the property referenced in the 311 service request is located",
+      "null_pct": 2.4,
+      "distinct": 5,
+      "values": [
+        {
+          "value": "EAST",
+          "count": 67759
+        },
+        {
+          "value": "NORTH",
+          "count": 58820
+        },
+        {
+          "value": "WEST",
+          "count": 39893
+        },
+        {
+          "value": "SOUTH",
+          "count": 33526
+        },
+        {
+          "value": "CENTRAL",
+          "count": 3746
+        }
+      ]
+    },
+    {
+      "name": "policedistrict",
+      "type": "VARCHAR",
+      "description": "The police district where the property referenced in the 311 service request is located",
+      "null_pct": 2.4,
+      "distinct": 5,
+      "values": [
+        {
+          "value": "District D",
+          "count": 53416
+        },
+        {
+          "value": "District E",
+          "count": 43623
+        },
+        {
+          "value": "District C",
+          "count": 36483
+        },
+        {
+          "value": "District A",
+          "count": 35878
+        },
+        {
+          "value": "District B",
+          "count": 34435
+        }
+      ]
+    },
+    {
+      "name": "census_tract",
+      "type": "VARCHAR",
+      "description": "The census tract where the property referenced in the 311 service request is located",
+      "null_pct": 0.0,
+      "distinct": 384,
+      "examples": [
+        "003100",
+        "002502",
+        "003700"
+      ]
+    },
+    {
+      "name": "days_to_close",
+      "type": "DOUBLE",
+      "description": "Days between created_at and closed_at (derived; null if open or if closed before created).",
+      "null_pct": 5.3,
+      "min": 0.0,
+      "max": 364.65
+    }
+  ]
+}

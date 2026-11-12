@@ -1,0 +1,12 @@
+# Pinned: a DuckDB file can only be read by the same or a newer DuckDB, so the
+# build machine and the server must use the same version.
+duckdb==2.0.0
+requests==2.34.2
+pytest==9.2.0
+fastapi==0.162.0
+uvicorn==0.54.0
+httpx==0.28.1
+sqlglot==30.25.0
+anthropic==2.3.0
+pydantic==2.14.1
+pytz==2025.2

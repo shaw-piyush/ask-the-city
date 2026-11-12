@@ -1,0 +1,21 @@
+{
+  "built_at": "2026-10-28T15:40:49+00:00",
+  "source_rows_updated_at": "2026-10-28T06:52:09+00:00",
+  "source_url": "https://data.buffalony.gov/d/3tj7-3tdz",
+  "license": "Public Domain U.S. Government",
+  "row_count": 208788,
+  "created_at_range": [
+    "2024-05-11 14:49",
+    "2026-10-28 01:56"
+  ],
+  "cleaning": {
+    "raw_rows": 208788,
+    "loaded_rows": 208788,
+    "dropped_missing_id_or_date": 0,
+    "dropped_duplicates": 0,
+    "swapped_coords_fixed": 10126,
+    "nulled_out_of_bounds_coords": 0,
+    "case_variants_fixed": 6123,
+    "closed_before_created": 0
+  }
+}
